@@ -27,6 +27,8 @@ namespace Gravimetry.Clients
 
         }
 
+        //Getter function so everytime a call is run this is reinitialized
+        //That way we always grab the latest accesstoken from preferences
         public HttpClient client
         {
             get
@@ -45,6 +47,7 @@ namespace Gravimetry.Clients
                 //Set baseaddress to api adress
                 client.BaseAddress = new Uri("https://10.0.2.2:5001");
 
+                //return client
                 return client;
             }
         }

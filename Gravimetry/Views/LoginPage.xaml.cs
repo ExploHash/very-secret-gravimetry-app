@@ -24,16 +24,21 @@ namespace Gravimetry.Views
 
         async void OnButtonClicked(object sender, EventArgs args)
         {
+            //Grab properties from binding
             string name = Username.Text;
             string password = Password.Text;
+
+            //Try calling login
             var success = await _authService.SignIn(name, password);
 
             if (success)
             {
+                //If success redirect
                 Application.Current.MainPage = new AppShell();
             }
             else
             {
+                //If failed show message
                 Error.Text = "Invalid Credentials";
             }
 

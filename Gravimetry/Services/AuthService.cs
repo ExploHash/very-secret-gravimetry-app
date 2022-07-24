@@ -19,13 +19,16 @@ namespace Gravimetry.Services
 
         public async Task<bool> SignIn(string username, string password)
         {
-            
+
+            //Create input object based on arguments
             var loginInput = new LoginInput();
             loginInput.Name = username;
             loginInput.Password = password;
 
+            //Call backend based on custom apiclient class
             var response = await _apiClient.client.PostAsJsonAsync("/Users/Login", loginInput);
 
+            //Check if successfull
             if (response.IsSuccessStatusCode)
             {
                 //Grab cookies based on request url
