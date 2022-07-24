@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Manager\" />
+    <None Remove="Microsoft.AspNet.WebApi.Client" />
+    <None Remove="Classes\" />
+    <None Remove="Clients\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Manager\" />
+    <Folder Include="Classes\" />
+    <Folder Include="Clients\" />
+  </ItemGroup>
+</Project>
