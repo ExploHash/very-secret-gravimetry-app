@@ -11,7 +11,7 @@ namespace Gravimetry.Views
 {
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public Team Item { get; set; }
 
         public NewItemPage()
         {

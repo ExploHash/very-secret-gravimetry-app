@@ -10,14 +10,17 @@ using Xamarin.Forms.Xaml;
 using Gravimetry.Models;
 using Gravimetry.Views;
 using Gravimetry.ViewModels;
+using Gravimetry.Services;
+using Xamarin.Essentials;
+
 
 namespace Gravimetry.Views
 {
-    public partial class ItemsPage : ContentPage
+    public partial class TeamsOverviewPage : ContentPage
     {
         ItemsViewModel _viewModel;
 
-        public ItemsPage()
+        public TeamsOverviewPage()
         {
             InitializeComponent();
 

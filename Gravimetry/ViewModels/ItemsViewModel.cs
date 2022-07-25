@@ -7,25 +7,29 @@ using Xamarin.Forms;
 
 using Gravimetry.Models;
 using Gravimetry.Views;
+using Gravimetry.Services;
 
 namespace Gravimetry.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        private Item _selectedItem;
+        private Team _selectedItem;
 
-        public ObservableCollection<Item> Items { get; }
+        public ObservableCollection<Team> Items { get; }
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
-        public Command<Item> ItemTapped { get; }
+        public Command<Team> ItemTapped { get; }
+
+        readonly UserService _userService = new UserService();
+
 
         public ItemsViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Items = new ObservableCollection<Team>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            ItemTapped = new Command<Item>(OnItemSelected);
+            ItemTapped = new Command<Team>(OnItemSelected);
 
             AddItemCommand = new Command(OnAddItem);
         }
@@ -37,7 +41,7 @@ namespace Gravimetry.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                var items = await _userService.GetTeams();
                 foreach (var item in items)
                 {
                     Items.Add(item);
@@ -59,7 +63,7 @@ namespace Gravimetry.ViewModels
             SelectedItem = null;
         }
 
-        public Item SelectedItem
+        public Team SelectedItem
         {
             get => _selectedItem;
             set
@@ -74,13 +78,13 @@ namespace Gravimetry.ViewModels
             await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
 
-        async void OnItemSelected(Item item)
+        async void OnItemSelected(Team item)
         {
             if (item == null)
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
+            //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
         }
     }
 }

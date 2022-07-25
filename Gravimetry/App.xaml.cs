@@ -13,7 +13,6 @@ namespace Gravimetry
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new LoginPage();
         }
 

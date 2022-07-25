@@ -38,7 +38,7 @@ namespace Gravimetry.Clients
 
                 if (accessToken.Length > 0)
                 {
-                    this.cookies.Add(new Cookie(".AspNetCore.Identity.Application", accessToken));
+                    this.cookies.Add(new Cookie(".AspNetCore.Identity.Application", accessToken, "/", "10.0.2.2"));
                 }
 
                 //Initialize httpclient based on handler
