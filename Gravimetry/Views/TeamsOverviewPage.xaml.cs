@@ -18,13 +18,13 @@ namespace Gravimetry.Views
 {
     public partial class TeamsOverviewPage : ContentPage
     {
-        ItemsViewModel _viewModel;
+        TeamsViewModel _viewModel;
 
         public TeamsOverviewPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new ItemsViewModel();
+            BindingContext = _viewModel = new TeamsViewModel();
         }
 
         protected override void OnAppearing()

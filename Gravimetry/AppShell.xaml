@@ -31,7 +31,7 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Incidents" Icon="icon_feed.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+        <ShellContent Title="Incidents" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:TeamsOverviewPage}" />
         <ShellContent Title="Monitors" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:TeamsOverviewPage}" />
         <ShellContent Title="Teams" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:TeamsOverviewPage}" />
     </TabBar>

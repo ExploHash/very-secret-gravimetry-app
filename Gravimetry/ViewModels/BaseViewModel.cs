@@ -12,44 +12,28 @@ namespace Gravimetry.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        //Event watched by refreshviews to refresh their view
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        //Holds raw private boolean for state
         bool isBusy = false;
+
+        //Getter setter for public access
         public bool IsBusy
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            get { return isBusy; } //Just return value
+            set {
+                isBusy = value; //Set value
+                OnPropertyChanged(); //Trigger event
+            }
         }
 
-        string title = string.Empty;
-        public string Title
+        //Function which needs to be implemented by INotifyPropertyChanged
+        //Triggers PropertyChanged event
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")//CallerMemberName is a annotation to automatically fill property name if executed from setter
         {
-            get { return title; }
-            set { SetProperty(ref title, value); }
+            //Actually invoke event for our refreshview
+            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        protected bool SetProperty<T>(ref T backingStore, T value,
-            [CallerMemberName] string propertyName = "",
-            Action onChanged = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
-                return false;
-
-            backingStore = value;
-            onChanged?.Invoke();
-            OnPropertyChanged(propertyName);
-            return true;
-        }
-
-        #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
-
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }
