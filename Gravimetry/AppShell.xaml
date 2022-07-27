@@ -31,9 +31,26 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Incidents" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:TeamsOverviewPage}" />
-        <ShellContent Title="Monitors" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:TeamsOverviewPage}" />
-        <ShellContent Title="Teams" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:TeamsOverviewPage}" />
+        <ShellContent Title="Incidents" ContentTemplate="{DataTemplate local:TeamsOverviewPage}">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FontAwesomeSolid"
+                            Glyph=""/>
+            </ShellContent.Icon>
+        </ShellContent>
+
+                <ShellContent Title="Monitors" ContentTemplate="{DataTemplate local:TeamsOverviewPage}">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FontAwesomeSolid"
+                            Glyph=""/>
+            </ShellContent.Icon>
+        </ShellContent>
+
+                <ShellContent Title="Teams" ContentTemplate="{DataTemplate local:TeamsOverviewPage}">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FontAwesomeSolid"
+                            Glyph=""/>
+            </ShellContent.Icon>
+        </ShellContent>
     </TabBar>
 
 </Shell>

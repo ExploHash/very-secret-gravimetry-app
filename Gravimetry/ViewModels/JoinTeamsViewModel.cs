@@ -12,28 +12,26 @@ using System.ComponentModel;
 
 namespace Gravimetry.ViewModels
 {
-    public class TeamsViewModel : BaseViewModel //Needs to be based of BaseViewModel for stupid notify event handling
+    public class JoinTeamsViewModel : BaseViewModel //Needs to be based of BaseViewModel for stupid notify event handling
     {
         //Observable collection for items which are shown in view
         public ObservableCollection<Team> Items { get; }
         //Command called by refreshview when refreshing
         public Command LoadItemsCommand { get; }
 
-        public Command<Team> LeaveTeam { get; }
+        public Command<Team> JoinTeam { get; }
 
-        public Command GoToJoinTeamsView { get; }
-
+        readonly TeamsService _teamsService = new TeamsService();
         readonly UserService _userService = new UserService();
 
 
-        public TeamsViewModel()
+        public JoinTeamsViewModel()
         {
             //Initialize observer
             Items = new ObservableCollection<Team>();
             //Initialize command and link to the method it actually executes when called
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-            LeaveTeam = new Command<Team>(async (team) => await OnLeaveTeam(team));
-            GoToJoinTeamsView = new Command(async (obj) => await OnGoToJoinTeamsView());
+            JoinTeam = new Command<Team>(OnJoinTeam);
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -43,9 +41,16 @@ namespace Gravimetry.ViewModels
             try
             {
                 Items.Clear(); //Clear list first
-                var items = await _userService.GetTeams(); //grab from api
+                var items = await _teamsService.GetPublicTeams(); //grab from api
+                var userItems = await _userService.GetTeams();
+
                 foreach (var item in items) //Loop through and set them in the observablecollection
                 {
+                    //Check if user already has team in list
+                    if (userItems.Find(userItem => userItem.Id == item.Id) != null)
+                    {
+                        item.UserJoined = true; //if so set userjoined to true
+                    }
                     Items.Add(item);
                 }
             }
@@ -64,14 +69,10 @@ namespace Gravimetry.ViewModels
             IsBusy = true; //Trigger a ExecuteLoadItemsCommand command by setting to true
         }
 
-        private async Task OnGoToJoinTeamsView()
+        private async void OnJoinTeam(Team team)
         {
-            await Shell.Current.GoToAsync(nameof(JoinTeamsPage)); //Open joins view
-        }
-
-        private async Task OnLeaveTeam(Team team)
-        {
-            await _userService.LeaveTeam(team.Id); //Call leave team
+            if (team.UserJoined) return; //Early exit if clicked team is already joined
+            await _userService.JoinTeam(team.Id); //Call join team
             IsBusy = true; //Trigger refresh
         }
     }

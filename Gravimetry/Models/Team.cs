@@ -9,6 +9,8 @@ namespace Gravimetry.Models
 
         public bool IsPublic { get; set; }
 
+        public bool UserJoined { get; set; } = false;
+
         public Team()
         {
            

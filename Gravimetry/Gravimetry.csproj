@@ -15,10 +15,29 @@
     <None Remove="Microsoft.AspNet.WebApi.Client" />
     <None Remove="Classes\" />
     <None Remove="Clients\" />
+    <None Remove="Xam.Plugin.Iconize" />
+    <None Remove="Resources\" />
+    <None Remove="Resources\Fonts\" />
+    <None Remove="Resources\Fonts\fabrands.otf" />
+    <None Remove="Resources\Fonts\faregular.otf" />
+    <None Remove="Resources\Fonts\fasolid.otf" />
+    <None Remove="Resources\Fonts\fasolid.ttf" />
+    <None Remove="Resources\Fonts\faregular.ttf" />
+    <None Remove="Resources\Fonts\fabrands.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Manager\" />
     <Folder Include="Classes\" />
     <Folder Include="Clients\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\fabrands.otf" />
+    <EmbeddedResource Include="Resources\Fonts\faregular.otf" />
+    <EmbeddedResource Include="Resources\Fonts\fasolid.otf" />
+    <EmbeddedResource Include="Resources\Fonts\fasolid.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\faregular.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\fabrands.ttf" />
   </ItemGroup>
 </Project>

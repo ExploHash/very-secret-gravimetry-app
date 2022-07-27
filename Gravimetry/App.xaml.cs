@@ -4,6 +4,9 @@ using Xamarin.Forms.Xaml;
 using Gravimetry.Services;
 using Gravimetry.Views;
 
+[assembly: ExportFont("faregular.ttf", Alias = "FontAwesome")]
+[assembly: ExportFont("fasolid.ttf", Alias = "FontAwesomeSolid")]
+
 namespace Gravimetry
 {
     public partial class App : Application

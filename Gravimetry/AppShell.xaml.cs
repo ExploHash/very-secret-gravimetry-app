@@ -14,6 +14,7 @@ namespace Gravimetry
             InitializeComponent();
             //Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+            Routing.RegisterRoute(nameof(JoinTeamsPage), typeof(JoinTeamsPage));
         }
     }
 }

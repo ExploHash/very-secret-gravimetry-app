@@ -30,7 +30,9 @@ namespace Gravimetry.Services
 
                 if (response.IsSuccessStatusCode)
                 {
+                    //Read content as normal string
                     var content = await response.Content.ReadAsStringAsync();
+                    //Because the response are teams in json format, convert those to actual team objects
                     return JsonConvert.DeserializeObject<List<Team>>(content);
                 }
             }
@@ -43,6 +45,48 @@ namespace Gravimetry.Services
             
 
             return null;
+        }
+
+        public async Task<bool> JoinTeam(int id)
+        {
+            //Call backend based on custom apiclient class
+            HttpResponseMessage response;
+            try
+            {
+                response = await _apiClient.client.PutAsync("/Users/Teams/" + id, null);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Fuck");
+            }
+
+            return false;
+        }
+
+        public async Task<bool> LeaveTeam(int id)
+        {
+            //Call backend based on custom apiclient class
+            HttpResponseMessage response;
+            try
+            {
+                response = await _apiClient.client.DeleteAsync("/Users/Teams/" + id);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Fuck");
+            }
+
+            return false;
         }
     }
 }

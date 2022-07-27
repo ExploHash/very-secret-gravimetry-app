@@ -16,16 +16,15 @@ using Xamarin.Essentials;
 
 namespace Gravimetry.Views
 {
-    public partial class TeamsOverviewPage : ContentPage
+    public partial class JoinTeamsPage : ContentPage
     {
-        TeamsViewModel _viewModel;
+        JoinTeamsViewModel _viewModel;
 
-        public TeamsOverviewPage()
+        public JoinTeamsPage()
         {
-
             InitializeComponent();
 
-            BindingContext = _viewModel = new TeamsViewModel();
+            BindingContext = _viewModel = new JoinTeamsViewModel();
         }
 
         protected override void OnAppearing()

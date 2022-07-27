@@ -48,50 +48,5 @@ namespace Gravimetry.Services
 
             return false;
         }
-
-
-        //public async Task<List<User>> GetUsers()
-        //{
-        //    try
-        //    {
-        //        //Build endpoint string 
-        //        var uri = new Uri($"{GeneralHelpers.url}{GeneralHelpers.endpointU}");
-        //        //Connect
-        //        var response = await httpClient.GetAsync(uri);
-        //        //If the response is successfull the content will be returned as a deserialized (JSON) list
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            var content = await response.Content.ReadAsStringAsync();
-        //            return JsonConvert.DeserializeObject<List<User>>(content);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //When there is an exeption this message is posted with the stacktrace
-        //        Console.WriteLine($"Exception occured in GetOfficePresences: {ex.Message}\n{ex.StackTrace}");
-        //    }
-        //    return null;
-        //}
-        //public async Task<User> PostUserAsync(User user)
-        //{
-
-        //    //Build endpoint string 
-        //    var uri = new Uri($"{GeneralHelpers.url}{GeneralHelpers.endpointU}");
-        //    //Make a JSON from the user object
-        //    var json = JsonConvert.SerializeObject(user);
-        //    var content = new StringContent(json, Encoding.UTF8, "application/json");
-        //    //Post de user to the api
-        //    var response = await httpClient.PostAsync(uri, content);
-        //    //If the post is not successfull a pop-up appears with an error
-        //    if (!response.IsSuccessStatusCode)
-        //    {
-        //        _ = Application.Current.MainPage.DisplayAlert(AppRes.Alert, AppRes.AccountFailed, AppRes.Cancel);
-        //    }
-        //    //If it was successfull the response is transformed again, a pop-up for success appears and the content is returned
-        //    var responseJson = await response.Content.ReadAsStringAsync();
-        //    var responseContent = JsonConvert.DeserializeObject<User>(responseJson);
-        //    _ = Application.Current.MainPage.DisplayAlert(Resources.AppRes.Success, Resources.AppRes.AccountCreated, Resources.AppRes.Ok);
-        //    return responseContent;
-        //}
     }
 }
