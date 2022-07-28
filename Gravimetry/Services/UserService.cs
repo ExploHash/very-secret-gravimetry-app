@@ -47,6 +47,33 @@ namespace Gravimetry.Services
             return null;
         }
 
+        public async Task<List<SiteMonitor>> GetMonitors(string search)
+        {
+            //Call backend based on custom apiclient class
+            HttpResponseMessage response;
+            try
+            {
+                response = await _apiClient.client.GetAsync("/Users/Monitors?search=" + search);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    //Read content as normal string
+                    var content = await response.Content.ReadAsStringAsync();
+                    //Because the response are teams in json format, convert those to actual team objects
+                    return JsonConvert.DeserializeObject<List<SiteMonitor>>(content);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Fuck");
+            }
+
+            //Check if successfull
+
+
+            return null;
+        }
+
         public async Task<bool> JoinTeam(int id)
         {
             //Call backend based on custom apiclient class

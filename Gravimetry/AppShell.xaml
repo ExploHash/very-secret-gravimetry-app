@@ -38,7 +38,7 @@
             </ShellContent.Icon>
         </ShellContent>
 
-                <ShellContent Title="Monitors" ContentTemplate="{DataTemplate local:TeamsOverviewPage}">
+                <ShellContent Title="Monitors" ContentTemplate="{DataTemplate local:MonitorOverviewPage}">
             <ShellContent.Icon>
                 <FontImageSource FontFamily="FontAwesomeSolid"
                             Glyph=""/>
