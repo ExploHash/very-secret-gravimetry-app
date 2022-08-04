@@ -10,7 +10,7 @@
                   <Label Text="{Binding Job}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
                   <Label Text="{Binding Instance}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" />
                   <StackLayout.GestureRecognizers> <!-- This weird shit is needed, so the correct context is used in this case "TeamsViewModel". Otherwise the LeaveTeam command will not be found. (Its in that viewmodel)-->
-                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:TeamsViewModel}}, Path=LeaveTeam}" CommandParameter="{Binding .}" />
+                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:MonitorsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}" />
                   </StackLayout.GestureRecognizers>
                </StackLayout>
             </DataTemplate>

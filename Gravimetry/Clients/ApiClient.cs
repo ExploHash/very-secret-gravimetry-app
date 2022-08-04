@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net;
-using Gravimetry.Classes;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 
 namespace Gravimetry.Clients

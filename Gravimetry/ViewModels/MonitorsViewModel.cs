@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using Gravimetry.Models;
+using Gravimetry.Views;
 using Gravimetry.Services;
 
 namespace Gravimetry.ViewModels
@@ -17,6 +18,8 @@ namespace Gravimetry.ViewModels
         //Command called by refreshview when refreshing
         public Command<string> LoadItemsCommand { get; }
 
+        public Command<SiteMonitor> ItemTapped { get; }
+
         readonly UserService _userService = new UserService();
 
 
@@ -26,6 +29,8 @@ namespace Gravimetry.ViewModels
             Items = new ObservableCollection<SiteMonitor>();
             //Initialize command and link to the method it actually executes when called
             LoadItemsCommand = new Command<string>(async (text) => await ExecuteLoadItemsCommand(text));
+
+            ItemTapped = new Command<SiteMonitor>(async(monitor) => await OnItemTapped(monitor));
         }
 
         public async Task ExecuteLoadItemsCommand(string search = "")
@@ -43,6 +48,11 @@ namespace Gravimetry.ViewModels
             {
                 Debug.WriteLine(ex);
             }
+        }
+
+        private async Task OnItemTapped(SiteMonitor siteMonitor)
+        {
+            await Shell.Current.GoToAsync($"{nameof(MonitorDetailPage)}?MonitorId={siteMonitor.Id}");
         }
     }
 }
