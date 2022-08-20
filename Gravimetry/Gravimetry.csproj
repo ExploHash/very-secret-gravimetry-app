@@ -40,4 +40,12 @@
     <EmbeddedResource Include="Resources\Fonts\faregular.ttf" />
     <EmbeddedResource Include="Resources\Fonts\fabrands.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\IncidentDetailPage.xaml.cs">
+      <DependentUpon>IncidentDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\ActiveIncidentsPage.xaml.cs">
+      <DependentUpon>ActiveIncidentsPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

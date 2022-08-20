@@ -18,6 +18,8 @@ namespace Gravimetry.Models
 
         public List<IncidentNote> IncidentNotes { get; set; }
 
+        public SiteMonitor SiteMonitor { get; set; }
+
         public bool IsResolved { get; set; } = false;
 
     }

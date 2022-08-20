@@ -31,7 +31,7 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Incidents" ContentTemplate="{DataTemplate local:TeamsOverviewPage}">
+        <ShellContent Title="Incidents" ContentTemplate="{DataTemplate local:ActiveIncidentsPage}">
             <ShellContent.Icon>
                 <FontImageSource FontFamily="FontAwesomeSolid"
                             Glyph=""/>
