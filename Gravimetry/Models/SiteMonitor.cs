@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace Gravimetry.Models
 {
     public class SiteMonitor
@@ -8,6 +10,10 @@ namespace Gravimetry.Models
         public string Instance { get; set; }
 
         public string Job { get; set; }
+
+        public int AverageUptime { get; set; }
+
+        public List<Incident> Incidents { get; set; }
 
         public SiteMonitor()
         {

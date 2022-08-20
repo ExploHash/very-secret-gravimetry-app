@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Gravimetry.Models;
 using Gravimetry.Services;
+using Gravimetry.Views;
 using System.Collections.Generic;
 using System.Web;
 
@@ -13,9 +14,12 @@ namespace Gravimetry.ViewModels
     {
         readonly MonitorService _monitorService = new MonitorService();
 
+        public Command<Incident> ItemTapped { get; }
 
         public MonitorDetailViewModel()
         {
+            ItemTapped = new Command<Incident>(async (incident) => await OnItemTapped(incident));
+
         }
 
         private SiteMonitor _siteMonitor;
@@ -60,6 +64,11 @@ namespace Gravimetry.ViewModels
             {
                 Debug.WriteLine(ex);
             }
+        }
+
+        private async Task OnItemTapped(Incident incident)
+        {
+            await Shell.Current.GoToAsync($"{nameof(IncidentDetailPage)}?IncidentId={incident.Id}");
         }
     }
 }
