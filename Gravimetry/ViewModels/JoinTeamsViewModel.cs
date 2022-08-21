@@ -20,12 +20,17 @@ namespace Gravimetry.ViewModels
 
         public Command ScanQr { get; }
 
-        readonly TeamsService _teamsService = new TeamsService();
-        readonly UserService _userService = new UserService();
+        readonly TeamsService _teamsService;
+        readonly UserService _userService;
 
 
-        public JoinTeamsViewModel()
+        public JoinTeamsViewModel(
+            TeamsService teamService,
+            UserService userService
+        )
         {
+            _teamsService = teamService;
+            _userService = userService;
             //Initialize observer
             Items = new ObservableCollection<Team>();
             //Initialize commands
@@ -34,7 +39,7 @@ namespace Gravimetry.ViewModels
             ScanQr = new Command(async () => await OnScanQr());
         }
 
-        async Task ExecuteLoadItemsCommand()
+        public async Task ExecuteLoadItemsCommand()
         {
             IsBusy = true; //Set to busy so refreshing icon is shown (and blocks double reload)
             

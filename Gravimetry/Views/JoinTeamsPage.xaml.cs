@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using Gravimetry.ViewModels;
+using Gravimetry.Services;
 
 
 namespace Gravimetry.Views
@@ -11,7 +12,10 @@ namespace Gravimetry.Views
         public JoinTeamsPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new JoinTeamsViewModel();
+            BindingContext = _viewModel = new JoinTeamsViewModel(
+                new TeamsService(),
+                new UserService()
+            );
         }
 
         protected override void OnAppearing()

@@ -17,7 +17,7 @@ namespace Gravimetry.ViewModels
             get { return isBusy; } //Just return value
             set {
                 isBusy = value; //Set value
-                OnPropertyChanged(); //Trigger event
+                OnPropertyChanged("IsBusy"); //Trigger event
             }
         }
 
@@ -26,7 +26,7 @@ namespace Gravimetry.ViewModels
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")//CallerMemberName is a annotation to automatically fill property name if executed from setter
         {
             //Actually invoke event for our refreshview
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

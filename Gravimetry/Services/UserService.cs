@@ -16,7 +16,7 @@ namespace Gravimetry.Services
         {
         }
 
-        public async Task<List<Team>> GetTeams()
+        public virtual async Task<List<Team>> GetTeams()
         {
             //Call backend based on custom apiclient class
             HttpResponseMessage response = await _apiClient.client.GetAsync("/Users/Teams");

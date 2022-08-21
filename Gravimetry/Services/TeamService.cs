@@ -16,7 +16,7 @@ namespace Gravimetry.Services
         {
         }
 
-        public async Task<List<Team>> GetPublicTeams()
+        public virtual async Task<List<Team>> GetPublicTeams()
         {
             //Call backend based on custom apiclient class
 
