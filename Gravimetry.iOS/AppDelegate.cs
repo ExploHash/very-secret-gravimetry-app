@@ -25,6 +25,36 @@ namespace Gravimetry.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
+
+            if (UIDevice.CurrentDevice.CheckSystemVersion(15, 0))
+            {
+                var appearance = new UINavigationBarAppearance()
+                {
+                    BackgroundColor = UIColor.FromRGB(150, 209, 255),
+                    ShadowColor = UIColor.FromRGB(150, 209, 255),
+                };
+
+                UINavigationBar.Appearance.StandardAppearance = appearance;
+                UINavigationBar.Appearance.ScrollEdgeAppearance = appearance;
+
+                var appearance2 = new UITabBarAppearance()
+                {
+                    BackgroundColor = UIColor.FromRGB(150, 209, 255),
+                    ShadowColor = UIColor.FromRGB(150, 209, 255),
+                };
+
+                UITabBar.Appearance.StandardAppearance = appearance2;
+                UITabBar.Appearance.ScrollEdgeAppearance = appearance2;
+
+
+                UITabBar.Appearance.TintColor = UIColor.White;
+                UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes() { TextColor = UIColor.White });
+                UITabBar.Appearance.SelectedImageTintColor = UIColor.White;
+                UITabBar.Appearance.UnselectedItemTintColor = UIColor.White;
+
+                ///END OF WORKAROUND
+            }
+
             return base.FinishedLaunching(app, options);
         }
     }

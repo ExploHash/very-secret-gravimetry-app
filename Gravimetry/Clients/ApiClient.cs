@@ -33,17 +33,17 @@ namespace Gravimetry.Clients
             {
                 //Add token to cookiejar if exists
                 var accessToken = Preferences.Get("accessToken", "");
-
+                var host = DeviceInfo.Platform == DevicePlatform.Android ? "10.0.2.2" : "127.0.0.1";
                 if (accessToken.Length > 0)
                 {
-                    this.cookies.Add(new Cookie(".AspNetCore.Identity.Application", accessToken, "/", "10.0.2.2"));
+                    this.cookies.Add(new Cookie(".AspNetCore.Identity.Application", accessToken, "/", host));
                 }
 
                 //Initialize httpclient based on handler
                 var client = new HttpClient(this.httpClientHandler);
 
                 //Set baseaddress to api adress based on platform
-                client.BaseAddress = new Uri(DeviceInfo.Platform == DevicePlatform.Android ? "https://10.0.2.2:5001": "https://localhost:5001");
+                client.BaseAddress = new Uri($"https://{host}:5001");
 
                 //return client
                 return client;

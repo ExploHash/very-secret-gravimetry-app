@@ -54,6 +54,8 @@ namespace Gravimetry.ViewModels.Manager
             }
         }
 
+        bool initialized = false;
+
         int _teamId;
 
         public int TeamId
@@ -65,6 +67,7 @@ namespace Gravimetry.ViewModels.Manager
             set
             {
                 _teamId = value;
+                initialized = true;
                 LoadTeam(value);
             }
         }
@@ -83,6 +86,14 @@ namespace Gravimetry.ViewModels.Manager
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+            }
+        }
+
+        public void OnAppearing()
+        {
+            if(initialized)
+            {
+                LoadTeam(TeamId);
             }
         }
 

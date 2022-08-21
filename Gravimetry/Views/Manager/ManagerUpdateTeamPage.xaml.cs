@@ -7,10 +7,18 @@ namespace Gravimetry.Views.Manager
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ManagerUpdateTeamPage : ContentPage
     {
+        ManagerUpdateTeamViewModel _viewModel;
+
         public ManagerUpdateTeamPage()
         {
             InitializeComponent();
-            this.BindingContext = new ManagerUpdateTeamViewModel();
+            this.BindingContext = _viewModel = new ManagerUpdateTeamViewModel();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnAppearing();
         }
     }
 
