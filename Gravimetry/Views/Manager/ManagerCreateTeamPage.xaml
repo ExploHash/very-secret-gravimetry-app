@@ -4,13 +4,13 @@
     <StackLayout Padding="10,0,10,0" x:DataType="local:ManagerCreateTeamViewModel">
       <StackLayout Orientation="Horizontal">
         <Label Text="Name: " />
-        <Entry Text="{Binding teamInput.Name}" Placeholder="Name" />
+        <Entry AutomationId="CreateTeamName" WidthRequest="200" Text="{Binding teamInput.Name}" Placeholder="Name" />
       </StackLayout>
       <StackLayout Orientation="Horizontal">
         <Label Text="Public: " />
-        <CheckBox IsChecked="{Binding teamInput.IsPublic}" />
+        <CheckBox AutomationId="CreateTeamCheck" IsChecked="{Binding teamInput.IsPublic}" />
       </StackLayout>
-      <Button Text="Create" Command="{Binding CreateCommand}" />
+      <Button AutomationId="CreateTeamButton" Text="Create" Command="{Binding CreateCommand}" />
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

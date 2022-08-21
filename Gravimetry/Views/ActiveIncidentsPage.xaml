@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:Gravimetry.ViewModels" xmlns:model="clr-namespace:Gravimetry.Models" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Gravimetry.Views.ActiveIncidentsPage" Title="Incidents" x:Name="Reee">
    <ContentPage.ToolbarItems>
-      <ToolbarItem Text="Admin" Command="{Binding GoToManagerTeamsPage}" />
+      <ToolbarItem AutomationId="AdminButton" Text="Admin" Command="{Binding GoToManagerTeamsPage}" />
    </ContentPage.ToolbarItems>
 
       <CollectionView x:Name="ItemsListView" ItemsSource="{Binding Items}">

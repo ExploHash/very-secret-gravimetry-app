@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
 using Moq;
 
 using Gravimetry.ViewModels;
@@ -56,7 +55,7 @@ namespace Gravimetry.UnitTests
 
             //Assert
             Assert.AreEqual(sut.Items.Count, 2);
-            foreach (var item in sut.Items) //Loop through and set them in the observablecollection
+            foreach (var item in sut.Items) //Loop through and check if userjoined is set correctly
             {
                 if (item.Id == 1)
                 {

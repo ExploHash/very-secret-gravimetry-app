@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:Gravimetry.ViewModels.Manager" xmlns:model="clr-namespace:Gravimetry.Models" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Gravimetry.Views.Manager.ManagerTeamsPage" Title="Teams">
   <ContentPage.ToolbarItems>
-    <ToolbarItem Text="Create" Command="{Binding GoToCreatePage}" />
+    <ToolbarItem AutomationId="GoToCreateButton" Text="Create" Command="{Binding GoToCreatePage}" />
   </ContentPage.ToolbarItems>
 
   <RefreshView Padding="10" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">

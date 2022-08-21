@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:Gravimetry.ViewModels" xmlns:model="clr-namespace:Gravimetry.Models" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Gravimetry.Views.MonitorOverviewPage" Title="Monitors">
   <StackLayout>
-    <SearchBar x:Name="searchBar" TextChanged="OnTextChanged" SearchCommand="{Binding LoadItemsCommand}" SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" Placeholder="Search items..." />
+    <SearchBar AutomationId="MonitorsSearchBar" x:Name="searchBar" TextChanged="OnTextChanged" SearchCommand="{Binding LoadItemsCommand}" SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" Placeholder="Search items..." />
     <CollectionView x:Name="ItemsListView" ItemsSource="{Binding Items}" SelectionMode="None">
       <CollectionView.ItemTemplate>
         <DataTemplate>
