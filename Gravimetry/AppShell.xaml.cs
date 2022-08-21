@@ -23,6 +23,7 @@ namespace Gravimetry
             Routing.RegisterRoute(nameof(ManagerUpdateTeamPage), typeof(ManagerUpdateTeamPage));
             Routing.RegisterRoute(nameof(ManagerAddUsersPage), typeof(ManagerAddUsersPage));
             Routing.RegisterRoute(nameof(ManagerAddMonitorsPage), typeof(ManagerAddMonitorsPage));
+            Routing.RegisterRoute(nameof(ManagerTeamQRPage), typeof(ManagerTeamQRPage));
         }
     }
 }

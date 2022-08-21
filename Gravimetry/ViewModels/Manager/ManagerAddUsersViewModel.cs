@@ -62,6 +62,8 @@ namespace Gravimetry.ViewModels.Manager
             try
             {
                 team = await _managerService.GetTeam(teamId); //grab from api
+                IsBusy = true;
+
             }
             catch (Exception ex)
             {
@@ -106,12 +108,6 @@ namespace Gravimetry.ViewModels.Manager
             {
                 IsBusy = false; //Always (error or not) set to IsBusy false
             }
-        }
-
-        public void OnAppearing() //Intialize function called from view
-        {
-            IsBusy = true; //Trigger a ExecuteLoadItemsCommand command by setting to true
-            //ExecuteLoadItemsCommand();
         }
 
         private async Task OnAddUser(ApplicationUser user)

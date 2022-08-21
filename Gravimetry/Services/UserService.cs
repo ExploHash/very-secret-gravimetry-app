@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace Gravimetry.Services
 {
@@ -23,26 +24,19 @@ namespace Gravimetry.Services
         public async Task<List<Team>> GetTeams()
         {
             //Call backend based on custom apiclient class
-            HttpResponseMessage response;
-            try
-            {
-                response = await _apiClient.client.GetAsync("/Users/Teams");
+            HttpResponseMessage response = await _apiClient.client.GetAsync("/Users/Teams");
 
-                if (response.IsSuccessStatusCode)
-                {
-                    //Read content as normal string
-                    var content = await response.Content.ReadAsStringAsync();
-                    //Because the response are teams in json format, convert those to actual team objects
-                    return JsonConvert.DeserializeObject<List<Team>>(content);
-                }
-            }
-            catch(Exception e)
+            if (response.IsSuccessStatusCode)
             {
-                Console.WriteLine("Fuck");
+                //Read content as normal string
+                var content = await response.Content.ReadAsStringAsync();
+                //Because the response are teams in json format, convert those to actual team objects
+                return JsonConvert.DeserializeObject<List<Team>>(content);
             }
-
-            //Check if successfull
-            
+            else
+            {
+                await Shell.Current.DisplayAlert("ApiError", "Failed to get teams.", "Cancel");
+            }
 
             return null;
         }
@@ -50,26 +44,19 @@ namespace Gravimetry.Services
         public async Task<List<SiteMonitor>> GetMonitors(string search)
         {
             //Call backend based on custom apiclient class
-            HttpResponseMessage response;
-            try
+            HttpResponseMessage response = await _apiClient.client.GetAsync("/Users/Monitors?search=" + search);
+
+            if (response.IsSuccessStatusCode)
             {
-                response = await _apiClient.client.GetAsync("/Users/Monitors?search=" + search);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    //Read content as normal string
-                    var content = await response.Content.ReadAsStringAsync();
-                    //Because the response are teams in json format, convert those to actual team objects
-                    return JsonConvert.DeserializeObject<List<SiteMonitor>>(content);
-                }
+                //Read content as normal string
+                var content = await response.Content.ReadAsStringAsync();
+                //Because the response are teams in json format, convert those to actual team objects
+                return JsonConvert.DeserializeObject<List<SiteMonitor>>(content);
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine("Fuck");
+                await Shell.Current.DisplayAlert("ApiError", "Failed to get monitors.", "Cancel");
             }
-
-            //Check if successfull
-
 
             return null;
         }
@@ -77,26 +64,19 @@ namespace Gravimetry.Services
         public async Task<List<Incident>> GetActiveIncidents()
         {
             //Call backend based on custom apiclient class
-            HttpResponseMessage response;
-            try
+            HttpResponseMessage response = await _apiClient.client.GetAsync("/Users/ActiveIncidents");
+
+            if (response.IsSuccessStatusCode)
             {
-                response = await _apiClient.client.GetAsync("/Users/ActiveIncidents");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    //Read content as normal string
-                    var content = await response.Content.ReadAsStringAsync();
-                    //Because the response are teams in json format, convert those to actual team objects
-                    return JsonConvert.DeserializeObject<List<Incident>>(content);
-                }
+                //Read content as normal string
+                var content = await response.Content.ReadAsStringAsync();
+                //Because the response are teams in json format, convert those to actual team objects
+                return JsonConvert.DeserializeObject<List<Incident>>(content);
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine("Fuck");
+                await Shell.Current.DisplayAlert("ApiError", "Failed to get incidents.", "Cancel");
             }
-
-            //Check if successfull
-
 
             return null;
         }
@@ -104,19 +84,15 @@ namespace Gravimetry.Services
         public async Task<bool> JoinTeam(int id)
         {
             //Call backend based on custom apiclient class
-            HttpResponseMessage response;
-            try
-            {
-                response = await _apiClient.client.PutAsync("/Users/Teams/" + id, null);
+            HttpResponseMessage response = await _apiClient.client.PutAsync("/Users/Teams/" + id, null);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return true;
-                }
-            }
-            catch (Exception e)
+            if (response.IsSuccessStatusCode)
             {
-                Console.WriteLine("Fuck");
+                return true;
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("ApiError", "Failed to join team.", "Cancel");
             }
 
             return false;
@@ -125,19 +101,15 @@ namespace Gravimetry.Services
         public async Task<bool> LeaveTeam(int id)
         {
             //Call backend based on custom apiclient class
-            HttpResponseMessage response;
-            try
-            {
-                response = await _apiClient.client.DeleteAsync("/Users/Teams/" + id);
+            HttpResponseMessage response = await _apiClient.client.DeleteAsync("/Users/Teams/" + id);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return true;
-                }
-            }
-            catch (Exception e)
+            if (response.IsSuccessStatusCode)
             {
-                Console.WriteLine("Fuck");
+                return true;
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("ApiError", "Failed to leave team.", "Cancel");
             }
 
             return false;

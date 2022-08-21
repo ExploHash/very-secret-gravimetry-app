@@ -26,11 +26,5 @@ namespace Gravimetry.Views.Manager
 
             BindingContext = _viewModel = new ManagerAddUsersViewModel();
         }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            _viewModel.OnAppearing();
-        }
     }
 }

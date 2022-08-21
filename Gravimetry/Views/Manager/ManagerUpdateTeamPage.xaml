@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:local="clr-namespace:Gravimetry.ViewModels.Manager" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:model="clr-namespace:Gravimetry.Models" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" mc:Ignorable="d" Title="Update Team" x:Class="Gravimetry.Views.Manager.ManagerUpdateTeamPage" Shell.NavBarIsVisible="True" x:DataType="local:ManagerUpdateTeamViewModel">
    <ContentPage.ToolbarItems>
+      <ToolbarItem Text="QR" Command="{Binding GoToTeamQRPage}" />
       <ToolbarItem Text="Delete" Command="{Binding DeleteTeam}" />
    </ContentPage.ToolbarItems>
     <ContentPage.Content>

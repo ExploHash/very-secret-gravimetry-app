@@ -44,6 +44,7 @@ namespace Gravimetry.ViewModels.Manager
             set
             {
                 _qrCodeImage = value;
+                OnPropertyChanged();
             }
         }
 

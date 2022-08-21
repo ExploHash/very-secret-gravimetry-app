@@ -16,21 +16,15 @@ using Xamarin.Essentials;
 
 namespace Gravimetry.Views.Manager
 {
-    public partial class ManagerAddUsersPage : ContentPage
+    public partial class ManagerTeamQRPage : ContentPage
     {
-        ManagerAddUsersViewModel _viewModel;
+        ManagerTeamQRViewModel _viewModel;
 
-        public ManagerAddUsersPage()
+        public ManagerTeamQRPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new ManagerAddUsersViewModel();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            _viewModel.OnAppearing();
+            BindingContext = _viewModel = new ManagerTeamQRViewModel();
         }
     }
 }

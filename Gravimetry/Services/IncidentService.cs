@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace Gravimetry.Services
 {
@@ -24,8 +25,6 @@ namespace Gravimetry.Services
         {
             //Call backend based on custom apiclient class
             HttpResponseMessage response;
-            try
-            {
                 response = await _apiClient.client.GetAsync("/Incident/" + incidentId);
 
                 if (response.IsSuccessStatusCode)
@@ -35,14 +34,10 @@ namespace Gravimetry.Services
                     //Because the response are teams in json format, convert those to actual team objects
                     return JsonConvert.DeserializeObject<Incident>(content);
                 }
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine("Fuck");
-            }
-
-            //Check if successfull
-            
+                else
+                {
+                    await Shell.Current.DisplayAlert("ApiError", "Failed to get incident.", "Cancel");
+                }
 
             return null;
         }
@@ -59,7 +54,7 @@ namespace Gravimetry.Services
             //Check if successfull
             if (!response.IsSuccessStatusCode)
             {
-                Console.WriteLine("please end me");
+                await Shell.Current.DisplayAlert("ApiError", "Failed to send message.", "Cancel");
             }
         }
     }

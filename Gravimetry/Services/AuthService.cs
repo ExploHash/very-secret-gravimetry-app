@@ -6,6 +6,7 @@ using Gravimetry.Classes;
 using Gravimetry.Clients;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace Gravimetry.Services
 {

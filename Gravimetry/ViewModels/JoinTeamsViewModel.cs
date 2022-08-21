@@ -9,6 +9,7 @@ using Gravimetry.Models;
 using Gravimetry.Views;
 using Gravimetry.Services;
 using System.ComponentModel;
+using Xamarin.Essentials;
 
 namespace Gravimetry.ViewModels
 {
@@ -21,6 +22,8 @@ namespace Gravimetry.ViewModels
 
         public Command<Team> JoinTeam { get; }
 
+        public Command ScanQr { get; }
+
         readonly TeamsService _teamsService = new TeamsService();
         readonly UserService _userService = new UserService();
 
@@ -32,6 +35,7 @@ namespace Gravimetry.ViewModels
             //Initialize command and link to the method it actually executes when called
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             JoinTeam = new Command<Team>(OnJoinTeam);
+            ScanQr = new Command(async () => await OnScanQr());
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -74,6 +78,11 @@ namespace Gravimetry.ViewModels
             if (team.UserJoined) return; //Early exit if clicked team is already joined
             await _userService.JoinTeam(team.Id); //Call join team
             IsBusy = true; //Trigger refresh
+        }
+
+        private async Task OnScanQr()
+        {
+            await MediaPicker.CapturePhotoAsync();
         }
     }
 }

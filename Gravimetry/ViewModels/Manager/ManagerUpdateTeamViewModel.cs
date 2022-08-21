@@ -25,13 +25,17 @@ namespace Gravimetry.ViewModels.Manager
         public Command AddMonitor { get; }
 
         public Command DeleteTeam { get; }
-         
+
+        public Command GoToTeamQRPage { get; }
+
+
         public ManagerUpdateTeamViewModel()
         {
             UpdateCommand = new Command(async () => await UpdateTeam());
             AddUser = new Command(async () => await OnAddUser());
             AddMonitor = new Command(async () => await OnAddMonitor());
             DeleteTeam = new Command(async () => await OnDeleteTeam());
+            GoToTeamQRPage = new Command(async () => await OnGoToTeamQRPage());
 
             DeleteMonitor = new Command<SiteMonitor>(async (monitor) => await OnDeleteMonitor(monitor));
             DeleteUser = new Command<ApplicationUser>(async (user) => await OnDeleteUser(user));
@@ -106,6 +110,12 @@ namespace Gravimetry.ViewModels.Manager
         private async Task OnAddUser()
         {
             await Shell.Current.GoToAsync($"{nameof(ManagerAddUsersPage)}?TeamId={TeamId}");
+        }
+
+        private async Task OnGoToTeamQRPage()
+        {
+            await Shell.Current.GoToAsync($"{nameof(ManagerTeamQRPage)}?TeamId={TeamId}");
+
         }
 
         private async Task OnDeleteTeam()
