@@ -5,11 +5,6 @@ namespace Gravimetry.Models
 {
     public class Incident
     {
-        public Incident()
-        {
-
-        }
-
         public int Id { get; set; }
 
         public DateTime Start { get; set; }

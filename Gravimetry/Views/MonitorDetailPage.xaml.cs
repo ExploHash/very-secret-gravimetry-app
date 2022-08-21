@@ -10,7 +10,6 @@ namespace Gravimetry.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MonitorDetailPage : ContentPage
     {
-
         public MonitorDetailPage()
         {
             InitializeComponent();

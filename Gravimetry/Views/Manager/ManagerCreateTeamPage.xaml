@@ -1,23 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:local="clr-namespace:Gravimetry.ViewModels.Manager"
-             x:Class="Gravimetry.Views.Manager.ManagerCreateTeamPage"
-             Title="Create team">
-    <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" x:DataType="local:ManagerCreateTeamViewModel">
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Name: "/>
-                <Entry Text="{Binding teamInput.Name}" Placeholder="Name" />
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Public: "/>
-                <CheckBox IsChecked="{Binding teamInput.IsPublic}"/>
-            </StackLayout>
-            <Button Text="Create" Command="{Binding CreateCommand}" />
-        </StackLayout>
-    </ContentPage.Content>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:local="clr-namespace:Gravimetry.ViewModels.Manager" x:Class="Gravimetry.Views.Manager.ManagerCreateTeamPage" Title="Create team">
+  <ContentPage.Content>
+    <StackLayout Padding="10,0,10,0" x:DataType="local:ManagerCreateTeamViewModel">
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Name: " />
+        <Entry Text="{Binding teamInput.Name}" Placeholder="Name" />
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Public: " />
+        <CheckBox IsChecked="{Binding teamInput.IsPublic}" />
+      </StackLayout>
+      <Button Text="Create" Command="{Binding CreateCommand}" />
+    </StackLayout>
+  </ContentPage.Content>
 </ContentPage>

@@ -2,13 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
-
 using Gravimetry.Models;
-using Gravimetry.Views;
 using Gravimetry.Services;
-using System.ComponentModel;
 using Xamarin.Essentials;
 
 namespace Gravimetry.ViewModels
@@ -32,7 +28,7 @@ namespace Gravimetry.ViewModels
         {
             //Initialize observer
             Items = new ObservableCollection<Team>();
-            //Initialize command and link to the method it actually executes when called
+            //Initialize commands
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             JoinTeam = new Command<Team>(OnJoinTeam);
             ScanQr = new Command(async () => await OnScanQr());
@@ -82,6 +78,7 @@ namespace Gravimetry.ViewModels
 
         private async Task OnScanQr()
         {
+            //Open photo dialog
             await MediaPicker.CapturePhotoAsync();
         }
     }

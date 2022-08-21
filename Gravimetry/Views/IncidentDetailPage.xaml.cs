@@ -1,9 +1,6 @@
-﻿using System;
-using Gravimetry.ViewModels;
+﻿using Gravimetry.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Gravimetry.Services;
-using Xamarin.Essentials;
 
 namespace Gravimetry.Views
 {

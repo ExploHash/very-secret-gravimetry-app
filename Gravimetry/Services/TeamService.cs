@@ -1,12 +1,7 @@
-﻿
-using System.Net.Http;
-using System.Net;
-using System;
-using Gravimetry.Classes;
+﻿using System.Net.Http;
 using Gravimetry.Models;
 using Gravimetry.Clients;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using Xamarin.Forms;

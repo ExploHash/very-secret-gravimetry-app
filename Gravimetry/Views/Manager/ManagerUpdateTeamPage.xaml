@@ -1,78 +1,78 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:local="clr-namespace:Gravimetry.ViewModels.Manager" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:model="clr-namespace:Gravimetry.Models" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" mc:Ignorable="d" Title="Update Team" x:Class="Gravimetry.Views.Manager.ManagerUpdateTeamPage" Shell.NavBarIsVisible="True" x:DataType="local:ManagerUpdateTeamViewModel">
-   <ContentPage.ToolbarItems>
-      <ToolbarItem Text="QR" Command="{Binding GoToTeamQRPage}" />
-      <ToolbarItem Text="Delete" Command="{Binding DeleteTeam}" />
-   </ContentPage.ToolbarItems>
-    <ContentPage.Content>
-      <StackLayout Padding="10,10,10,0">
-         <Label Text="Properties" FontAttributes="Bold" />
-         <StackLayout>
-            <StackLayout Orientation="Horizontal">
-               <Label Text="Name: " />
-               <Entry WidthRequest="200" Text="{Binding team.Name}" Placeholder="Name" />
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-               <Label Text="Public: " />
-               <CheckBox IsChecked="{Binding team.IsPublic}" />
-            </StackLayout>
-            <Button Text="Update" Command="{Binding UpdateCommand}" />
-         </StackLayout>
-         <RelativeLayout>
-            <Label Text="Monitors" FontAttributes="Bold" />
-            <Label FontFamily="FontAwesomeSolid" FontSize="20" HorizontalOptions="End" VerticalOptions="End" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-20}" Text="+">
-               <!-- Eventhandler for label trigger command when tapping -->
-               <Label.GestureRecognizers>
-                  <!-- This weird shit is needed, so the correct context is used in this case "JoinTeamsViewModel". Otherwise the JoinTeam command will not be found. (Its in that viewmodel)-->
-                  <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:ManagerUpdateTeamViewModel}}, Path=AddMonitor}" CommandParameter="{Binding .}" />
-               </Label.GestureRecognizers>
-            </Label>
-         </RelativeLayout>
-         <CollectionView ItemsSource="{Binding team.SiteMonitors}" SelectionMode="None">
-            <CollectionView.ItemTemplate>
-               <DataTemplate>
-                  <RelativeLayout Padding="10" x:DataType="model:SiteMonitor">
-                     <StackLayout x:DataType="model:SiteMonitor">
-                        <Label Text="{Binding Job}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                        <Label Text="{Binding Instance}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" />
-                     </StackLayout>
-                     <Label x:Name="join" FontFamily="FontAwesomeSolid" FontSize="20" HorizontalOptions="End" VerticalOptions="End" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-20}" Text="">
-                        <!-- Eventhandler for label trigger command when tapping -->
-                        <Label.GestureRecognizers>
-                           <!-- This weird shit is needed, so the correct context is used in this case "JoinTeamsViewModel". Otherwise the JoinTeam command will not be found. (Its in that viewmodel)-->
-                           <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:ManagerUpdateTeamViewModel}}, Path=DeleteMonitor}" CommandParameter="{Binding .}" />
-                        </Label.GestureRecognizers>
-                     </Label>
-                  </RelativeLayout>
-               </DataTemplate>
-            </CollectionView.ItemTemplate>
-         </CollectionView>
-         <RelativeLayout>
-            <Label Text="Users" FontAttributes="Bold" />
-            <Label x:Name="join" FontFamily="FontAwesomeSolid" FontSize="20" HorizontalOptions="End" VerticalOptions="End" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-20}" Text="+">
-               <!-- Eventhandler for label trigger command when tapping -->
-               <Label.GestureRecognizers>
-                  <!-- This weird shit is needed, so the correct context is used in this case "JoinTeamsViewModel". Otherwise the JoinTeam command will not be found. (Its in that viewmodel)-->
-                  <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:ManagerUpdateTeamViewModel}}, Path=AddUser}" CommandParameter="{Binding .}" />
-               </Label.GestureRecognizers>
-            </Label>
-         </RelativeLayout>
-         <CollectionView ItemsSource="{Binding team.ApplicationUsers}" SelectionMode="None">
-            <CollectionView.ItemTemplate>
-               <DataTemplate>
-                  <RelativeLayout Padding="10" x:DataType="model:ApplicationUser">
-                     <Label Text="{Binding UserName}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                     <Label FontFamily="FontAwesomeSolid" FontSize="20" HorizontalOptions="End" VerticalOptions="End" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-20}" Text="">
-                        <!-- Eventhandler for label trigger command when tapping -->
-                        <Label.GestureRecognizers>
-                           <!-- This weird shit is needed, so the correct context is used in this case "JoinTeamsViewModel". Otherwise the JoinTeam command will not be found. (Its in that viewmodel)-->
-                           <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:ManagerUpdateTeamViewModel}}, Path=DeleteUser}" CommandParameter="{Binding .}" />
-                        </Label.GestureRecognizers>
-                     </Label>
-                  </RelativeLayout>
-               </DataTemplate>
-            </CollectionView.ItemTemplate>
-         </CollectionView>
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="QR" Command="{Binding GoToTeamQRPage}" />
+    <ToolbarItem Text="Delete" Command="{Binding DeleteTeam}" />
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <StackLayout Padding="10,10,10,0">
+      <Label Text="Properties" FontAttributes="Bold" />
+      <StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Name: " />
+          <Entry WidthRequest="200" Text="{Binding team.Name}" Placeholder="Name" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Public: " />
+          <CheckBox IsChecked="{Binding team.IsPublic}" />
+        </StackLayout>
+        <Button Text="Update" Command="{Binding UpdateCommand}" />
       </StackLayout>
-   </ContentPage.Content>
+      <RelativeLayout>
+        <Label Text="Monitors" FontAttributes="Bold" />
+        <Label FontFamily="FontAwesomeSolid" FontSize="20" HorizontalOptions="End" VerticalOptions="End" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-20}" Text="+">
+          <!-- Eventhandler for label trigger command when tapping -->
+          <Label.GestureRecognizers>
+            <!-- This weird shit is needed, so the correct context is used in this case "JoinTeamsViewModel". Otherwise the JoinTeam command will not be found. (Its in that viewmodel)-->
+            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:ManagerUpdateTeamViewModel}}, Path=AddMonitor}" CommandParameter="{Binding .}" />
+          </Label.GestureRecognizers>
+        </Label>
+      </RelativeLayout>
+      <CollectionView ItemsSource="{Binding team.SiteMonitors}" SelectionMode="None">
+        <CollectionView.ItemTemplate>
+          <DataTemplate>
+            <RelativeLayout Padding="10" x:DataType="model:SiteMonitor">
+              <StackLayout x:DataType="model:SiteMonitor">
+                <Label Text="{Binding Job}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                <Label Text="{Binding Instance}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" />
+              </StackLayout>
+              <Label FontFamily="FontAwesomeSolid" FontSize="20" HorizontalOptions="End" VerticalOptions="End" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-20}" Text="">
+                <!-- Eventhandler for label trigger command when tapping -->
+                <Label.GestureRecognizers>
+                  <!-- This weird shit is needed, so the correct context is used in this case "JoinTeamsViewModel". Otherwise the JoinTeam command will not be found. (Its in that viewmodel)-->
+                  <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:ManagerUpdateTeamViewModel}}, Path=DeleteMonitor}" CommandParameter="{Binding .}" />
+                </Label.GestureRecognizers>
+              </Label>
+            </RelativeLayout>
+          </DataTemplate>
+        </CollectionView.ItemTemplate>
+      </CollectionView>
+      <RelativeLayout>
+        <Label Text="Users" FontAttributes="Bold" />
+        <Label FontFamily="FontAwesomeSolid" FontSize="20" HorizontalOptions="End" VerticalOptions="End" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-20}" Text="+">
+          <!-- Eventhandler for label trigger command when tapping -->
+          <Label.GestureRecognizers>
+            <!-- This weird shit is needed, so the correct context is used in this case "JoinTeamsViewModel". Otherwise the JoinTeam command will not be found. (Its in that viewmodel)-->
+            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:ManagerUpdateTeamViewModel}}, Path=AddUser}" CommandParameter="{Binding .}" />
+          </Label.GestureRecognizers>
+        </Label>
+      </RelativeLayout>
+      <CollectionView ItemsSource="{Binding team.ApplicationUsers}" SelectionMode="None">
+        <CollectionView.ItemTemplate>
+          <DataTemplate>
+            <RelativeLayout Padding="10" x:DataType="model:ApplicationUser">
+              <Label Text="{Binding UserName}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+              <Label FontFamily="FontAwesomeSolid" FontSize="20" HorizontalOptions="End" VerticalOptions="End" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Constant=-20}" Text="">
+                <!-- Eventhandler for label trigger command when tapping -->
+                <Label.GestureRecognizers>
+                  <!-- This weird shit is needed, so the correct context is used in this case "JoinTeamsViewModel". Otherwise the JoinTeam command will not be found. (Its in that viewmodel)-->
+                  <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:ManagerUpdateTeamViewModel}}, Path=DeleteUser}" CommandParameter="{Binding .}" />
+                </Label.GestureRecognizers>
+              </Label>
+            </RelativeLayout>
+          </DataTemplate>
+        </CollectionView.ItemTemplate>
+      </CollectionView>
+    </StackLayout>
+  </ContentPage.Content>
 </ContentPage>

@@ -19,7 +19,6 @@ namespace Gravimetry.ViewModels
         public MonitorDetailViewModel()
         {
             ItemTapped = new Command<Incident>(async (incident) => await OnItemTapped(incident));
-
         }
 
         private SiteMonitor _siteMonitor;

@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using QRCoder;
-
-using Gravimetry.Models;
-using Gravimetry.Views;
-using Gravimetry.Services;
-using System.ComponentModel;
 using System.Collections.Generic;
 using System.Web;
 using System.IO;
@@ -18,6 +8,12 @@ namespace Gravimetry.ViewModels.Manager
 {
     public class ManagerTeamQRViewModel : BaseViewModel, IQueryAttributable //Needs to be based of BaseViewModel for stupid notify event handling
     {
+
+        public ManagerTeamQRViewModel()
+        {
+           
+        }
+        
         int _teamId;
 
         public int TeamId
@@ -55,16 +51,12 @@ namespace Gravimetry.ViewModels.Manager
 
         public void LoadQR(int teamId)
         {
+            //Generate qr code
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode($"{teamId}", QRCodeGenerator.ECCLevel.L);
             PngByteQRCode qRCode = new PngByteQRCode(qrCodeData);
             byte[] qrCodeBytes = qRCode.GetGraphic(20);
             QRCodeImage = ImageSource.FromStream(() => new MemoryStream(qrCodeBytes));
-        }
-
-        public ManagerTeamQRViewModel()
-        {
-           
         }
     }
 }

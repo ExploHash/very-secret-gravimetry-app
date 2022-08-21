@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
-using Xamarin.Forms;
-
-using Gravimetry.Models;
-using Gravimetry.Services;
 
 namespace Gravimetry.ViewModels
 {

@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:Gravimetry.ViewModels" xmlns:model="clr-namespace:Gravimetry.Models" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Gravimetry.Views.MonitorOverviewPage" Title="Monitors" x:Name="Reee">
-    <StackLayout>
-        <SearchBar x:Name="searchBar" TextChanged="OnTextChanged" SearchCommand="{Binding LoadItemsCommand}"
-                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" Placeholder="Search items..." />
-      <CollectionView x:Name="ItemsListView" ItemsSource="{Binding Items}" SelectionMode="None">
-         <CollectionView.ItemTemplate>
-            <DataTemplate>
-               <StackLayout Padding="10" x:DataType="model:SiteMonitor">
-                  <Label Text="{Binding Job}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                  <Label Text="{Binding Instance}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" />
-                  <StackLayout.GestureRecognizers> <!-- This weird shit is needed, so the correct context is used in this case "TeamsViewModel". Otherwise the LeaveTeam command will not be found. (Its in that viewmodel)-->
-                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:MonitorsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}" />
-                  </StackLayout.GestureRecognizers>
-               </StackLayout>
-            </DataTemplate>
-         </CollectionView.ItemTemplate>
-      </CollectionView>
-    </StackLayout>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:Gravimetry.ViewModels" xmlns:model="clr-namespace:Gravimetry.Models" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Gravimetry.Views.MonitorOverviewPage" Title="Monitors">
+  <StackLayout>
+    <SearchBar x:Name="searchBar" TextChanged="OnTextChanged" SearchCommand="{Binding LoadItemsCommand}" SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" Placeholder="Search items..." />
+    <CollectionView x:Name="ItemsListView" ItemsSource="{Binding Items}" SelectionMode="None">
+      <CollectionView.ItemTemplate>
+        <DataTemplate>
+          <StackLayout Padding="10" x:DataType="model:SiteMonitor">
+            <Label Text="{Binding Job}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+            <Label Text="{Binding Instance}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="12" />
+            <StackLayout.GestureRecognizers>
+              <!-- This weird shit is needed, so the correct context is used in this case "TeamsViewModel". Otherwise the LeaveTeam command will not be found. (Its in that viewmodel)-->
+              <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:MonitorsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}" />
+            </StackLayout.GestureRecognizers>
+          </StackLayout>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+  </StackLayout>
 </ContentPage>

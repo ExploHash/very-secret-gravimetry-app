@@ -1,17 +1,5 @@
-﻿using System;
-using System.ComponentModel;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-using Gravimetry.Models;
-using Gravimetry.Views;
+﻿using Xamarin.Forms;
 using Gravimetry.ViewModels;
-using Gravimetry.Services;
-using Xamarin.Essentials;
 
 
 namespace Gravimetry.Views
@@ -22,23 +10,21 @@ namespace Gravimetry.Views
 
         public ActiveIncidentsPage()
         {
-
             InitializeComponent();
-
             BindingContext = _viewModel = new ActiveIncidentsViewModel();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.IsRefreshing = true;
+            _viewModel.IsRefreshing = true; //Turn on refresh when reentering page
             _viewModel.OnAppearing();
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            _viewModel.IsRefreshing = false;
+            _viewModel.IsRefreshing = false; //Turn off refresh
         }
     }
 }

@@ -2,15 +2,10 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
-
 using Gravimetry.Models;
-using Gravimetry.Views;
 using Gravimetry.Views.Manager;
-
 using Gravimetry.Services;
-using System.ComponentModel;
 
 namespace Gravimetry.ViewModels.Manager
 {
@@ -32,7 +27,7 @@ namespace Gravimetry.ViewModels.Manager
         {
             //Initialize observer
             Items = new ObservableCollection<Team>();
-            //Initialize command and link to the method it actually executes when called
+            //Initialize commands
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             ItemTapped = new Command<Team>(async (team) => await OnItemTapped(team));
             GoToCreatePage = new Command(async () => await OnGoToCreatePage());

@@ -3,15 +3,10 @@ namespace Gravimetry.Models
 {
     public class IncidentNote
     {
-        public IncidentNote()
-        {
-
-        }
-
         public int Id { get; set; }
 
         public string Message { get; set; }
-             
+
         public bool IsPublic { get; set; } = false;
 
         public ApplicationUser ApplicationUser { get; set; }

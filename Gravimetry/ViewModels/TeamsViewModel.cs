@@ -2,13 +2,10 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
-
 using Gravimetry.Models;
 using Gravimetry.Views;
 using Gravimetry.Services;
-using System.ComponentModel;
 
 namespace Gravimetry.ViewModels
 {

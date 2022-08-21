@@ -8,7 +8,7 @@
             <Label Text="% uptime" FontSize="30" />
          </StackLayout>
          <Label Text="Incidents" FontAttributes="Bold" />
-         <CollectionView x:Name="ItemsListView" ItemsSource="{Binding siteMonitor.Incidents}" SelectionMode="None">
+         <CollectionView ItemsSource="{Binding siteMonitor.Incidents}" SelectionMode="None">
             <CollectionView.ItemTemplate>
                <DataTemplate>
                   <StackLayout Padding="10" x:DataType="model:Incident">

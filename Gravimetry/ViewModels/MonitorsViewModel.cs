@@ -2,9 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
-
 using Gravimetry.Models;
 using Gravimetry.Views;
 using Gravimetry.Services;
@@ -35,18 +33,12 @@ namespace Gravimetry.ViewModels
 
         public async Task ExecuteLoadItemsCommand(string search = "")
         {
-            try
+            Items.Clear(); //Clear list first
+            var items = await _userService.GetMonitors(search); //grab from api
+            
+            foreach (var item in items) //Loop through and set them in the observablecollection
             {
-                Items.Clear(); //Clear list first
-                var items = await _userService.GetMonitors(search); //grab from api
-                foreach (var item in items) //Loop through and set them in the observablecollection
-                {
-                    Items.Add(item);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
+                Items.Add(item);
             }
         }
 

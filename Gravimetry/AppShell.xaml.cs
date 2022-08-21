@@ -13,7 +13,7 @@ namespace Gravimetry
         public AppShell()
         {
             InitializeComponent();
-            //Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            //Initialize routes
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(JoinTeamsPage), typeof(JoinTeamsPage));
             Routing.RegisterRoute(nameof(MonitorDetailPage), typeof(MonitorDetailPage));

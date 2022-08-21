@@ -16,10 +16,5 @@ namespace Gravimetry.Models
         public List<SiteMonitor> SiteMonitors { get; set; }
 
         public List<ApplicationUser> ApplicationUsers { get; set; }
-
-        public Team()
-        {
-           
-        }
     }
 }

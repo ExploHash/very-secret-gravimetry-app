@@ -42,8 +42,8 @@ namespace Gravimetry.Clients
                 //Initialize httpclient based on handler
                 var client = new HttpClient(this.httpClientHandler);
 
-                //Set baseaddress to api adress
-                client.BaseAddress = new Uri("https://10.0.2.2:5001");
+                //Set baseaddress to api adress based on platform
+                client.BaseAddress = new Uri(DeviceInfo.Platform == DevicePlatform.Android ? "https://10.0.2.2:5001": "https://localhost:5001");
 
                 //return client
                 return client;

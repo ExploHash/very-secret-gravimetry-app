@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Gravimetry.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -41,8 +37,6 @@ namespace Gravimetry.Views
                 //If failed show message
                 Error.Text = "Invalid Credentials";
             }
-
-
         }
 
         protected override void OnAppearing()

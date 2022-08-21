@@ -2,14 +2,11 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
-
 using Gravimetry.Models;
 using Gravimetry.Views;
 using Gravimetry.Views.Manager;
 using Gravimetry.Services;
-using System.ComponentModel;
 
 namespace Gravimetry.ViewModels
 {
@@ -32,7 +29,7 @@ namespace Gravimetry.ViewModels
             //Initialize observer
             Items = new ObservableCollection<Incident>();
             GoToManagerTeamsPage = new Command(async () => await OnGoToManagerTeamsPage());
-            //Initialize command and link to the method it actually executes when called
+            //Initialize commands
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             ItemTapped = new Command<Incident>(async (incident) => await OnItemTapped(incident));
         }
@@ -41,9 +38,8 @@ namespace Gravimetry.ViewModels
 
         public void OnAppearing()
         {
+            //Timer for refreshing of data
             Device.StartTimer(TimeSpan.FromSeconds(1), () => {
-                // If you want to update UI, make sure its on the on the main thread.
-                // Otherwise, you can remove the BeginInvokeOnMainThread
                 Device.BeginInvokeOnMainThread(async () => await ExecuteLoadItemsCommand());
                 return IsRefreshing;
             });

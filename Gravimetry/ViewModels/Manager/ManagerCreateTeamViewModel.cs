@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Threading.Tasks;
-
+﻿using System.Threading.Tasks;
 using Xamarin.Forms;
-
 using Gravimetry.Models;
-using Gravimetry.Views;
 using Gravimetry.Services;
-using System.ComponentModel;
 
 namespace Gravimetry.ViewModels.Manager
 {
@@ -38,7 +31,9 @@ namespace Gravimetry.ViewModels.Manager
 
         public async Task OnCreate()
         {
+            //Create team
             var team = await _managerService.Create(teamInput);
+            //Navigate to back
             await Shell.Current.Navigation.PopAsync();
         }
 

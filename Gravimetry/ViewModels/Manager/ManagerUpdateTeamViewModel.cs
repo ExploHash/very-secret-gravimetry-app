@@ -31,6 +31,7 @@ namespace Gravimetry.ViewModels.Manager
 
         public ManagerUpdateTeamViewModel()
         {
+            //Initialize commands
             UpdateCommand = new Command(async () => await UpdateTeam());
             AddUser = new Command(async () => await OnAddUser());
             AddMonitor = new Command(async () => await OnAddMonitor());
@@ -77,7 +78,7 @@ namespace Gravimetry.ViewModels.Manager
         {
             try
             {
-                team = await _managerService.GetTeam(teamId); //grab from api
+                team = await _managerService.GetTeam(teamId); //grab team from api
             }
             catch (Exception ex)
             {
