@@ -15,6 +15,8 @@ namespace Gravimetry.Models
 
         public List<Incident> Incidents { get; set; }
 
+        public bool UserJoined { get; set; } = false;
+
         public SiteMonitor()
         {
            

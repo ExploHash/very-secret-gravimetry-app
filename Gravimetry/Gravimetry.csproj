@@ -9,6 +9,7 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+    <PackageReference Include="QRCoder" Version="1.4.3" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\Manager\" />
@@ -24,6 +25,8 @@
     <None Remove="Resources\Fonts\fasolid.ttf" />
     <None Remove="Resources\Fonts\faregular.ttf" />
     <None Remove="Resources\Fonts\fabrands.ttf" />
+    <None Remove="ViewModels\Manager\" />
+    <None Remove="QRCoder" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Manager\" />
@@ -31,6 +34,7 @@
     <Folder Include="Clients\" />
     <Folder Include="Resources\" />
     <Folder Include="Resources\Fonts\" />
+    <Folder Include="ViewModels\Manager\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Fonts\fabrands.otf" />

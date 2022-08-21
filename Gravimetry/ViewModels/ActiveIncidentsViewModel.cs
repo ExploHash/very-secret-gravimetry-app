@@ -7,6 +7,7 @@ using Xamarin.Forms;
 
 using Gravimetry.Models;
 using Gravimetry.Views;
+using Gravimetry.Views.Manager;
 using Gravimetry.Services;
 using System.ComponentModel;
 
@@ -21,6 +22,8 @@ namespace Gravimetry.ViewModels
 
         public Command<Incident> ItemTapped { get; }
 
+        public Command GoToManagerTeamsPage { get; }
+
         readonly UserService _userService = new UserService();
 
 
@@ -28,6 +31,7 @@ namespace Gravimetry.ViewModels
         {
             //Initialize observer
             Items = new ObservableCollection<Incident>();
+            GoToManagerTeamsPage = new Command(async () => await OnGoToManagerTeamsPage());
             //Initialize command and link to the method it actually executes when called
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             ItemTapped = new Command<Incident>(async (incident) => await OnItemTapped(incident));
@@ -65,6 +69,11 @@ namespace Gravimetry.ViewModels
         private async Task OnItemTapped(Incident incident)
         {
             await Shell.Current.GoToAsync($"{nameof(IncidentDetailPage)}?IncidentId={incident.Id}");
+        }
+
+        private async Task OnGoToManagerTeamsPage()
+        {
+            await Shell.Current.GoToAsync(nameof(ManagerTeamsPage));
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace Gravimetry.Models
 {
     public class Team
@@ -10,6 +12,10 @@ namespace Gravimetry.Models
         public bool IsPublic { get; set; }
 
         public bool UserJoined { get; set; } = false;
+
+        public List<SiteMonitor> SiteMonitors { get; set; }
+
+        public List<ApplicationUser> ApplicationUsers { get; set; }
 
         public Team()
         {
